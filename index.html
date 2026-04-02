@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Madhukar Reddy Musku · Healthcare AI & Data Science</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #060b14;
+      --bg2: #0d1524;
+      --bg3: #111d30;
+      --accent: #00e5c8;
+      --accent2: #0077ff;
+      --accent3: #ff4f7b;
+      --text: #e8f0ff;
+      --muted: #5a6f8a;
+      --border: rgba(0,229,200,0.12);
+      --card: rgba(13,21,36,0.85);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ── GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,200,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,200,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(6,11,20,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── SECTIONS ── */
+    section { position: relative; z-index: 1; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    h1 .name-line {
+      display: block;
+      background: linear-gradient(120deg, var(--text) 0%, var(--accent) 60%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.8;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-sub span { color: var(--text); }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.6rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 500;
+    }
+    .btn-primary:hover { background: #00fff5; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* ── STATS ROW ── */
+    .hero-stats {
+      margin-top: 4rem;
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+
+    .stat { display: flex; flex-direction: column; gap: 0.25rem; }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .stat-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── SECTION HEADERS ── */
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 4rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: #8fa3c0;
+      line-height: 1.9;
+      font-size: 0.88rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text p span { color: var(--text); }
+
+    .edu-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .edu-card:hover { border-color: var(--accent); }
+    .edu-card .degree {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .edu-card .school {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-top: 0.3rem;
+    }
+    .edu-card .year {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-cat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      transition: all 0.25s;
+    }
+    .skill-cat:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 40px rgba(0,229,200,0.08);
+    }
+
+    .skill-cat-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      font-size: 0.68rem;
+      padding: 0.25rem 0.6rem;
+      background: rgba(0,229,200,0.06);
+      border: 1px solid rgba(0,229,200,0.15);
+      border-radius: 2px;
+      color: #8fa3c0;
+      transition: all 0.2s;
+    }
+    .tag:hover { background: rgba(0,229,200,0.12); color: var(--accent); }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--bg2); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-card:hover {
+      border-color: rgba(0,229,200,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 50px rgba(0,119,255,0.08);
+    }
+
+    .project-num {
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 0.78rem;
+      color: #6a82a0;
+      line-height: 1.8;
+      flex: 1;
+    }
+
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .stack-tag {
+      font-size: 0.62rem;
+      padding: 0.2rem 0.5rem;
+      background: rgba(0,119,255,0.08);
+      border: 1px solid rgba(0,119,255,0.2);
+      border-radius: 2px;
+      color: #5599ff;
+      letter-spacing: 0.05em;
+    }
+
+    .project-impact {
+      font-size: 0.72rem;
+      color: var(--accent);
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .exp-item:last-child { border-bottom: none; }
+
+    .exp-date {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      padding-top: 0.2rem;
+    }
+
+    .exp-role {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .exp-org {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-top: 0.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.78rem;
+      color: #6a82a0;
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg);
+      text-align: center;
+    }
+
+    #contact .section-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero, .section-wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">MRM_</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div style="max-width:1100px; margin:0 auto;">
+      <div class="hero-tag">Available for opportunities · Healthcare AI & ML</div>
+      <h1>
+        <span class="name-line">Madhukar</span>
+        <span class="name-line">Reddy Musku</span>
+      </h1>
+      <p class="hero-sub">
+        <span>Data Scientist & ML Engineer</span> building production AI systems at the intersection of
+        clinical data, medical imaging, and large-scale analytics.
+        Currently at <span>University of Iowa Health Care</span>.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects ↓</a>
+        <a href="mailto:mmreddy743@gmail.com" class="btn btn-outline">Get in Touch</a>
+        <a href="https://github.com/mmreddy743" target="_blank" class="btn btn-outline">GitHub ↗</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">280+</span>
+          <span class="stat-label">Institutions Served</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Production AI Systems</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">MS</span>
+          <span class="stat-label">Data Science · UIowa</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">HIPAA</span>
+          <span class="stat-label">Compliant Pipelines</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-wrap">
+      <p class="section-label reveal">// about</p>
+      <h2 class="reveal">Background</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm a data scientist and ML engineer focused on <span>clinical AI</span> — building
+            systems that handle real medical data, pass regulatory scrutiny, and actually get used.
+          </p>
+          <p>
+            At UIHC, I work on the <span>PT-GQ Survey Analytics Platform</span>, a longitudinal
+            research data system serving 280+ healthcare institutions with HIPAA-compliant ETL
+            pipelines, FHIR/HL7 integration, and automated reporting.
+          </p>
+          <p>
+            My research interests sit at the intersection of <span>medical image segmentation</span>
+            (nnU-Net, MedCLIP, MONAI), RAG/LLM systems for clinical workflows, and robust
+            uncertainty-aware ML for safety-critical applications.
+          </p>
+          <p>
+            Previously interned at <span>McArdle Laboratory (UW–Madison)</span> on 3D fluorescence
+            microscopy for cancer biology using 3D U-Net architectures.
+          </p>
+        </div>
+        <div class="reveal">
+          <div class="edu-card">
+            <div class="degree">MS · Data Science</div>
+            <div class="school">University of Iowa</div>
+            <div class="year">2023–2025 · GPA 3.97</div>
+          </div>
+          <div class="edu-card">
+            <div class="degree">BE · Industrial Engineering</div>
+            <div class="school">NIT Tiruchirappalli, India</div>
+            <div class="year">2017–2021</div>
+          </div>
+          <div class="edu-card" style="border-color:rgba(0,229,200,0.25);">
+            <div class="degree" style="color:var(--accent);">Open to Roles</div>
+            <div class="school">Healthcare AI · ML Engineering · Clinical Data Science</div>
+            <div class="year">Tempus · Rad AI · Siemens Healthineers · Flatiron Health</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-wrap">
+      <p class="section-label reveal">// skills</p>
+      <h2 class="reveal">Tech Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-cat reveal">
+          <div class="skill-cat-title">ML / AI</div>
+          <div class="skill-tags">
+            <span class="tag">PyTorch</span><span class="tag">TensorFlow</span>
+            <span class="tag">nnU-Net</span><span class="tag">MONAI</span>
+            <span class="tag">MedCLIP</span><span class="tag">scikit-learn</span>
+            <span class="tag">RAG</span><span class="tag">LLMs</span>
+            <span class="tag">3D U-Net</span>
+          </div>
+        </div>
+        <div class="skill-cat reveal">
+          <div class="skill-cat-title">Clinical Data</div>
+          <div class="skill-tags">
+            <span class="tag">FHIR</span><span class="tag">HL7</span>
+            <span class="tag">HIPAA Pipelines</span><span class="tag">DICOM</span>
+            <span class="tag">NIfTI</span><span class="tag">REDCap</span>
+            <span class="tag">ICD-10</span>
+          </div>
+        </div>
+        <div class="skill-cat reveal">
+          <div class="skill-cat-title">Engineering</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">React</span>
+            <span class="tag">Flask</span><span class="tag">PostgreSQL</span>
+            <span class="tag">Docker</span><span class="tag">Apache Airflow</span>
+            <span class="tag">AWS EC2</span><span class="tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-cat reveal">
+          <div class="skill-cat-title">Analytics</div>
+          <div class="skill-tags">
+            <span class="tag">Pandas</span><span class="tag">NumPy</span>
+            <span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
+            <span class="tag">SQL</span><span class="tag">Tableau</span>
+            <span class="tag">Statistical Modeling</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-wrap">
+      <p class="section-label reveal">// projects</p>
+      <h2 class="reveal">Featured Work</h2>
+      <div class="projects-grid">
+
+        <div class="project-card reveal">
+          <div class="project-num">01 / UIHC</div>
+          <div class="project-title">PT-GQ Survey Analytics Platform</div>
+          <div class="project-desc">
+            Longitudinal multi-institutional research platform serving 280+ healthcare programs.
+            Full-stack system with HIPAA-compliant ETL, automated PDF reporting, and wave-over-wave
+            trend analysis. Deployed on AWS EC2 with Docker.
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">React</span><span class="stack-tag">Flask</span>
+            <span class="stack-tag">PostgreSQL</span><span class="stack-tag">AWS</span>
+            <span class="stack-tag">Docker</span><span class="stack-tag">Airflow</span>
+          </div>
+          <div class="project-impact">→ 280+ institutions · 7 survey waves</div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-num">02 / IMAGING</div>
+          <div class="project-title">Medical Image Segmentation Pipeline</div>
+          <div class="project-desc">
+            End-to-end segmentation pipeline for head/neck tumors and NG-tube positioning
+            detection from NIfTI chest X-rays. Uses nnU-Net + MedCLIP ensemble with
+            uncertainty quantification for safety-critical clinical deployment.
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">nnU-Net</span><span class="stack-tag">MedCLIP</span>
+            <span class="stack-tag">MONAI</span><span class="stack-tag">PyTorch</span>
+            <span class="stack-tag">NIfTI</span><span class="stack-tag">DICOM</span>
+          </div>
+          <div class="project-impact">→ Clinical-grade ensemble prediction</div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-num">03 / DATA ENG</div>
+          <div class="project-title">HIPAA-Compliant ETL Pipeline</div>
+          <div class="project-desc">
+            Apache Airflow-based ETL automating end-to-end survey data processing — from CSV
+            ingestion through FHIR/HL7 standardization, PostgreSQL storage, PDF report generation,
+            and automated email delivery to institutional stakeholders.
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Airflow</span><span class="stack-tag">FHIR</span>
+            <span class="stack-tag">HL7</span><span class="stack-tag">PostgreSQL</span>
+            <span class="stack-tag">Python</span>
+          </div>
+          <div class="project-impact">→ Fully automated multi-step pipeline</div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-num">04 / RESEARCH</div>
+          <div class="project-title">3D Fluorescence Microscopy · Cancer Biology</div>
+          <div class="project-desc">
+            ML Research at McArdle Laboratory (UW–Madison). Built 3D U-Net architectures
+            for cell cycle classification from fluorescence microscopy stacks. Applied CNNs
+            to high-content imaging for cancer biology research.
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">3D U-Net</span><span class="stack-tag">CNN</span>
+            <span class="stack-tag">PyTorch</span><span class="stack-tag">Microscopy</span>
+          </div>
+          <div class="project-impact">→ McArdle Lab · UW–Madison</div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-num">05 / LLM</div>
+          <div class="project-title">RAG / LLM Clinical Query System</div>
+          <div class="project-desc">
+            Retrieval-augmented generation system for clinical data querying. Combines vector
+            search over structured healthcare records with LLM-generated summaries for
+            clinician-facing Q&A workflows. HIPAA-aware architecture.
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">RAG</span><span class="stack-tag">LLM</span>
+            <span class="stack-tag">FAISS</span><span class="stack-tag">Flask</span>
+            <span class="stack-tag">Python</span>
+          </div>
+          <div class="project-impact">→ Clinician-facing Q&A interface</div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-num">06 / TOOLS</div>
+          <div class="project-title">AI-Powered Job Pipeline</div>
+          <div class="project-desc">
+            Automated job discovery and ranking system using Apify scraping + Claude API.
+            Scores postings against resume with weighted relevance metrics across skills,
+            domain fit, and seniority. Targets healthcare AI roles.
+          </div>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span><span class="stack-tag">Apify</span>
+            <span class="stack-tag">Claude API</span><span class="stack-tag">Pandas</span>
+          </div>
+          <div class="project-impact">→ Automated resume-to-JD scoring</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-wrap">
+      <p class="section-label reveal">// experience</p>
+      <h2 class="reveal">Where I've Worked</h2>
+      <div class="exp-list">
+
+        <div class="exp-item reveal">
+          <div class="exp-date">2023 – Present</div>
+          <div>
+            <div class="exp-role">Data Analyst & Research Data Scientist</div>
+            <div class="exp-org">University of Iowa Health Care · Iowa City, IA</div>
+            <ul class="exp-bullets">
+              <li>Lead PT-GQ Analytics Platform serving 280+ healthcare institutions</li>
+              <li>Built HIPAA-compliant ETL pipelines with FHIR/HL7 integration</li>
+              <li>Deployed production systems on AWS EC2 with Docker containerization</li>
+              <li>Automated longitudinal reporting across 7 survey waves</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-date">Summer 2023</div>
+          <div>
+            <div class="exp-role">ML Research Intern</div>
+            <div class="exp-org">McArdle Laboratory for Cancer Research · UW–Madison</div>
+            <ul class="exp-bullets">
+              <li>Developed 3D U-Net for cell cycle classification in fluorescence microscopy</li>
+              <li>Processed high-content imaging stacks for cancer biology research</li>
+              <li>Applied CNN-based pipelines to multi-channel 3D volumetric data</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-date">2026</div>
+          <div>
+            <div class="exp-role">Contract Screener · Spectra Project</div>
+            <div class="exp-org">Handshake AI</div>
+            <ul class="exp-bullets">
+              <li>Technical evaluation of Python/mypy compiler contributions</li>
+              <li>Assessed mypyc primitive implementations and type system extensions</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-wrap">
+      <p class="section-label reveal">// contact</p>
+      <h2 class="reveal">Let's Build Something</h2>
+      <p class="reveal" style="color:var(--muted); font-size:0.85rem; max-width:480px; line-height:1.8;">
+        Open to healthcare AI, ML engineering, and clinical data science roles.
+        Reach out if you're working on something interesting.
+      </p>
+      <div class="contact-links reveal">
+        <a href="mailto:mmreddy743@gmail.com" class="btn btn-primary">mmreddy743@gmail.com</a>
+        <a href="https://github.com/mmreddy743" target="_blank" class="btn btn-outline">GitHub</a>
+        <a href="https://linkedin.com/in/mmreddy743" target="_blank" class="btn btn-outline">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Madhukar Reddy Musku · Built with intent · Iowa City, IA
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+</body>
+</html>
