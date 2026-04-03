@@ -53,6 +53,16 @@ h1 em{font-style:normal;background:linear-gradient(135deg,var(--a1),var(--a2));-
 .btn-a:hover{background:#5fffd8;transform:translateY(-2px);box-shadow:0 6px 24px rgba(60,240,197,.25)}
 .btn-b{background:transparent;color:var(--txt);border:1px solid var(--border)}
 .btn-b:hover{border-color:var(--a2);color:var(--a2);transform:translateY(-2px)}
+.btn-resume{background:transparent;color:var(--a4);border:1px solid rgba(245,200,66,.3)}
+.btn-resume:hover{background:rgba(245,200,66,.08);border-color:var(--a4);transform:translateY(-2px)}
+.avatar-wrap{margin-bottom:1.5rem;opacity:0;animation:up .5s .05s forwards}
+.avatar{width:72px;height:72px;border-radius:50%;border:2px solid var(--a1);object-fit:cover;display:block;box-shadow:0 0 20px rgba(60,240,197,.2)}
+.avatar-fallback{width:72px;height:72px;border-radius:50%;border:2px solid var(--a1);background:var(--bg3);display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.4rem;color:var(--a1);box-shadow:0 0 20px rgba(60,240,197,.2)}
+.proj-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:.7rem;margin-top:.2rem}
+.proj-metric-inline{font-size:.7rem;color:var(--a1)}
+.proj-private{display:inline-flex;align-items:center;gap:.35rem;font-size:.6rem;padding:.2rem .55rem;background:rgba(255,95,135,.05);border:1px solid rgba(255,95,135,.2);border-radius:2px;color:#ff8fab;text-decoration:none;transition:all .2s;white-space:nowrap}
+.proj-private:hover{background:rgba(255,95,135,.12);color:var(--a3)}
+.proj-private::before{content:'🔒';font-size:.6rem}
 .hero-card{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:2rem;opacity:0;animation:up .7s .3s forwards}
 .hero-card-title{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--txt3);margin-bottom:1.5rem}
 .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
@@ -165,12 +175,16 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="mailto:musku@uiowa.edu" class="nav-cta">Hire Me ↗</a>
+  <a href="mailto:mmreddy743@gmail.com" class="nav-cta">Hire Me ↗</a>
 </nav>
 
 <section id="hero">
 <div class="hero-inner">
   <div>
+    <div class="avatar-wrap">
+      <img src="profile.jpg" alt="Madhukar Reddy Musku" class="avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+      <div class="avatar-fallback" style="display:none">MR</div>
+    </div>
     <div class="hero-eyebrow">Open to Opportunities · Healthcare AI & ML Engineering</div>
     <h1>Madhukar<br/><em>Reddy Musku</em></h1>
     <p class="hero-bio">
@@ -180,7 +194,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
     </p>
     <div class="hero-btns">
       <a href="#projects" class="btn btn-a">View Projects ↓</a>
-      <a href="#experience" class="btn btn-b">Experience</a>
+      <a href="resume.pdf" download class="btn btn-resume">↓ Resume PDF</a>
       <a href="https://github.com/mmreddy743" target="_blank" class="btn btn-b">GitHub ↗</a>
       <a href="https://linkedin.com/in/mmr743" target="_blank" class="btn btn-b">LinkedIn ↗</a>
     </div>
@@ -195,7 +209,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
     </div>
     <div class="status-chip">Available for full-time roles</div>
     <div class="quick-links">
-      <a href="mailto:musku@uiowa.edu" class="qlink"><span>📧 musku@uiowa.edu</span><span>→</span></a>
+      <a href="mailto:mmreddy743@gmail.com" class="qlink"><span>📧 mmreddy743@gmail.com</span><span>→</span></a>
       <a href="https://linkedin.com/in/mmr743" target="_blank" class="qlink"><span>🔗 linkedin.com/in/mmr743</span><span>→</span></a>
       <a href="https://github.com/mmreddy743" target="_blank" class="qlink"><span>⚙ github.com/mmreddy743</span><span>→</span></a>
     </div>
@@ -221,16 +235,16 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
         <div class="edu-meta">Aug 2023 – May 2025 · GPA 3.80 / 4.00</div>
       </div>
       <div class="edu-item reveal reveal-d1">
-        <div class="edu-deg">BTech · Engineering</div>
+        <div class="edu-deg">BTech · Industrial Engineering</div>
         <div class="edu-inst">NIT Tiruchirappalli · India</div>
         <div class="edu-meta">Aug 2019 – May 2023 · GPA 3.50 / 4.00</div>
       </div>
       <div class="edu-item reveal reveal-d2" style="border-color:rgba(60,240,197,.25)">
         <div class="edu-deg" style="color:var(--a1)">Target Roles</div>
-        <div style="font-size:.72rem;color:var(--txt2);margin-top:.4rem;line-height:1.7">Healthcare AI · ML Engineering · Clinical Data Science<br/>Tempus AI · Rad AI · Siemens Healthineers · Flatiron · Navina AI</div>
+        <div style="font-size:.72rem;color:var(--txt2);margin-top:.4rem;line-height:1.7">Healthcare AI · ML Engineering · Clinical Data Science<br/>Open to top healthcare AI companies nationwide</div>
       </div>
       <div class="edu-item reveal reveal-d3">
-        <div style="font-size:.72rem;color:var(--txt2);line-height:1.9">📍 Iowa City, IA · Open to relocation<br/>📞 +1 319-471-6885<br/>✉️ musku@uiowa.edu</div>
+        <div style="font-size:.72rem;color:var(--txt2);line-height:1.9">📍 Iowa City, IA · Open to relocation<br/>📞 +1 319-471-6885<br/>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ee839b9d859bae9b8781998fc08b8a9b">[email&#160;protected]</a></div>
       </div>
     </div>
   </div>
@@ -292,7 +306,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
     </div>
 
     <div class="tl-item reveal">
-      <div class="tl-date"><span>June 2024</span>Aug 2024</div>
+      <div class="tl-date"><span>June 2024</span>Aug 2025</div>
       <div>
         <div class="tl-dot"></div>
         <div class="tl-role">Graduate Research Assistant · Molecular Physiology & Biophysics</div>
@@ -354,7 +368,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
         <span class="proj-tag">LLMs</span><span class="proj-tag">RAG</span><span class="proj-tag">Flask</span>
         <span class="proj-tag">ReactJS</span><span class="proj-tag">OpenAI</span><span class="proj-tag">Stable Diffusion</span><span class="proj-tag">Google TTS</span>
       </div>
-      <div class="proj-metric">→ Sub-30s response time · 24/7 educational support</div>
+      <div class="proj-footer">
+        <span class="proj-metric-inline">→ Sub-30s response time · 24/7 educational support</span>
+        <a href="/cdn-cgi/l/email-protection#d1bcbca3b4b5b5a8e6e5e291b6bcb0b8bdffb2bebceea2a4b3bbb4b2a5ec92beb5b4f183b4a0a4b4a2a5ebf19ca4bda5b8fc96909885f192b9b0a5b3bea5" class="proj-private">Private · Request Access</a>
+      </div>
     </div>
 
     <div class="proj-card reveal reveal-d1">
@@ -365,7 +382,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
         <span class="proj-tag">PyTorch</span><span class="proj-tag">U-Net</span><span class="proj-tag">CNN</span>
         <span class="proj-tag">Grad-CAM</span><span class="proj-tag">Medical Imaging</span><span class="proj-tag">Computer Vision</span>
       </div>
-      <div class="proj-metric">→ AUC-optimized · clinically explainable</div>
+      <div class="proj-footer">
+        <span class="proj-metric-inline">→ AUC-optimized · clinically explainable</span>
+        <a href="/cdn-cgi/l/email-protection#4e23233c2b2a2a37797a7d0e29232f2722602d2123713d3b2c242b2d3a730d212a2b6e1c2b3f3b2b3d3a746e00096e1a3b2c2b6e0a2b3a2b2d3a272120" class="proj-private">Private · Request Access</a>
+      </div>
     </div>
 
     <div class="proj-card reveal reveal-d2">
@@ -376,7 +396,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
         <span class="proj-tag">FHIR</span><span class="proj-tag">Microservices</span><span class="proj-tag">Java</span>
         <span class="proj-tag">Node.js</span><span class="proj-tag">MySQL</span><span class="proj-tag">HIPAA</span><span class="proj-tag">REST APIs</span>
       </div>
-      <div class="proj-metric">→ Full HIPAA compliance · RBAC · FHIR exchange</div>
+      <div class="proj-footer">
+        <span class="proj-metric-inline">→ Full HIPAA compliance · RBAC · FHIR exchange</span>
+        <a href="/cdn-cgi/l/email-protection#a3ceced1c6c7c7da949790e3c4cec2cacf8dc0ccce9cd0d6c1c9c6c0d79ee0ccc7c683f1c6d2d6c6d0d79983eaebeef0" class="proj-private">Private · Request Access</a>
+      </div>
     </div>
 
     <div class="proj-card reveal reveal-d3">
@@ -387,7 +410,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
         <span class="proj-tag">scikit-learn</span><span class="proj-tag">NHANES</span><span class="proj-tag">Feature Engineering</span>
         <span class="proj-tag">Healthcare Analytics</span><span class="proj-tag">Python</span>
       </div>
-      <div class="proj-metric">→ Clinically actionable risk stratification</div>
+      <div class="proj-footer">
+        <span class="proj-metric-inline">→ Clinically actionable risk stratification</span>
+        <a href="/cdn-cgi/l/email-protection#335e5e415657574a04070073545e525a5f1d505c5e0c404651595650470e705c5756136156424656404709137b564352475a475a401371137e5c57565f" class="proj-private">Private · Request Access</a>
+      </div>
     </div>
 
     <div class="proj-card reveal reveal-d4">
@@ -398,7 +424,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
         <span class="proj-tag">Java</span><span class="proj-tag">Angular</span><span class="proj-tag">MySQL</span>
         <span class="proj-tag">REST APIs</span><span class="proj-tag">Selenium</span><span class="proj-tag">SonarQube</span><span class="proj-tag">jUnit</span>
       </div>
-      <div class="proj-metric">→ Automated testing · CI/CD · global-scale matching</div>
+      <div class="proj-footer">
+        <span class="proj-metric-inline">→ Automated testing · CI/CD · global-scale matching</span>
+        <a href="/cdn-cgi/l/email-protection#7b1616091e1f1f024c4f483b1c161a12175518141644080e19111e180f4638141f1e5b291e0a0e1e080f415b3f12081a080f1e095b2b171a0f1d140916" class="proj-private">Private · Request Access</a>
+      </div>
     </div>
 
     <div class="proj-card reveal reveal-d5">
@@ -409,7 +438,10 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
         <span class="proj-tag">Ruby on Rails</span><span class="proj-tag">PostgreSQL</span><span class="proj-tag">LLM</span>
         <span class="proj-tag">GenAI</span><span class="proj-tag">REST APIs</span><span class="proj-tag">MVC</span>
       </div>
-      <div class="proj-metric">→ Dynamic AI narrative generation · multiplayer sync</div>
+      <div class="proj-footer">
+        <span class="proj-metric-inline">→ Dynamic AI narrative generation · multiplayer sync</span>
+        <a href="/cdn-cgi/l/email-protection#e984849b8c8d8d90dedddaa98e84888085c78a8684d69a9c8b838c8a9dd4aa868d8cc9bb8c989c8c9a9dd3c9bbb9aec9ae8c87a8a0c9ae88848c" class="proj-private">Private · Request Access</a>
+      </div>
     </div>
 
   </div>
@@ -511,12 +543,11 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
   <h2 class="reveal">Let's Build Something</h2>
   <p class="reveal" style="color:var(--txt2);font-size:.82rem;max-width:500px;line-height:1.9">
     Open to full-time roles in healthcare AI, ML engineering, and clinical data science.
-    Targeting Tempus AI, Rad AI, Siemens Healthineers, Flatiron Health, and Navina AI.
   </p>
   <div class="contact-grid">
-    <a href="mailto:musku@uiowa.edu" class="contact-card reveal">
+    <a href="mailto:mmreddy743@gmail.com" class="contact-card reveal">
       <div class="cc-label">Email</div>
-      <div class="cc-val">musku@uiowa.edu</div>
+      <div class="cc-val">mmreddy743@gmail.com</div>
     </a>
     <a href="https://linkedin.com/in/mmr743" target="_blank" class="contact-card reveal reveal-d1">
       <div class="cc-label">LinkedIn</div>
@@ -526,15 +557,15 @@ footer{background:var(--bg);border-top:1px solid var(--border);text-align:center
       <div class="cc-label">GitHub</div>
       <div class="cc-val">github.com/mmreddy743</div>
     </a>
-    <a href="tel:+13194716885" class="contact-card reveal reveal-d3">
-      <div class="cc-label">Phone</div>
-      <div class="cc-val">+1 319-471-6885</div>
+    <a href="resume.pdf" download class="contact-card reveal reveal-d3">
+      <div class="cc-label">Resume</div>
+      <div class="cc-val">↓ Download PDF</div>
     </a>
   </div>
 </div>
 </section>
 
-<footer>© 2026 Madhukar Reddy Musku · Iowa City, IA · Built with intent, not templates</footer>
+<footer>© 2026 Madhukar Reddy Musku · Iowa City, IA</footer>
 
 <script>
 const obs = new IntersectionObserver(entries => {
